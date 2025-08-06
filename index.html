@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jay Mahato - Web Developer Portfolio</title>
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<script>
+tailwind.config = {
+theme: {
+extend: {
+colors: {
+primary: '#FF6B35',
+secondary: '#FFFFFF'
+},
+borderRadius: {
+'none': '0px',
+'sm': '4px',
+DEFAULT: '8px',
+'md': '12px',
+'lg': '16px',
+'xl': '20px',
+'2xl': '24px',
+'3xl': '32px',
+'full': '9999px',
+'button': '8px'
+}
+}
+}
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css" rel="stylesheet">
+<style>
+:where([class^="ri-"])::before { content: "\f3c2"; }
+body { font-family: 'Inter', sans-serif; }
+.gradient-bg { background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%); }
+.hero-bg {
+background-image: url('https://readdy.ai/api/search-image?query=modern%20minimalist%20dark%20workspace%20with%20coding%20elements%2C%20web%20development%20setup%2C%20clean%20desk%20with%20laptop%20and%20monitors%2C%20professional%20lighting%2C%20dark%20background%20with%20orange%20accent%20lights%2C%20high-tech%20atmosphere%2C%20contemporary%20office%20space&width=1920&height=1080&seq=hero-bg&orientation=landscape');
+background-size: cover;
+background-position: center;
+position: relative;
+}
+.hero-overlay {
+background: linear-gradient(135deg, rgba(26, 26, 26, 0.9) 0%, rgba(45, 45, 45, 0.8) 100%);
+}
+.skill-bar {
+background: linear-gradient(90deg, #FF6B35 0%, #FF8A65 100%);
+}
+.project-card {
+transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.project-card:hover {
+transform: translateY(-8px);
+box-shadow: 0 20px 40px rgba(255, 107, 53, 0.2);
+}
+.service-card {
+transition: all 0.3s ease;
+background: linear-gradient(135deg, #2d2d2d 0%, #3a3a3a 100%);
+}
+.service-card:hover {
+transform: translateY(-5px);
+background: linear-gradient(135deg, #FF6B35 0%, #FF8A65 100%);
+}
+.contact-form input, .contact-form textarea {
+background: rgba(45, 45, 45, 0.8);
+border: 1px solid rgba(255, 107, 53, 0.3);
+transition: border-color 0.3s ease;
+}
+.contact-form input:focus, .contact-form textarea:focus {
+border-color: #FF6B35;
+outline: none;
+}
+</style>
+</head>
+<body class="bg-gray-900 text-white">
+<!-- Navigation -->
+<nav class="fixed top-0 w-full bg-gray-900/95 backdrop-blur-sm z-50 border-b border-gray-800">
+<div class="max-w-7xl mx-auto px-6">
+<div class="flex items-center justify-between h-16">
+<div class="text-2xl font-bold text-primary">JM</div>
+<div class="hidden md:flex space-x-8">
+<a href="#home" class="text-white hover:text-primary transition-colors duration-300">Home</a>
+<a href="#about" class="text-white hover:text-primary transition-colors duration-300">About Me</a>
+<a href="#skills" class="text-white hover:text-primary transition-colors duration-300">Skills</a>
+<a href="#portfolio" class="text-white hover:text-primary transition-colors duration-300">Portfolio</a>
+<a href="#services" class="text-white hover:text-primary transition-colors duration-300">Services</a>
+<a href="#contact" class="text-white hover:text-primary transition-colors duration-300">Contact</a>
+</div>
+<button id="mobile-menu-btn" class="md:hidden w-8 h-8 flex items-center justify-center">
+<i class="ri-menu-line text-xl"></i>
+</button>
+</div>
+</div>
+<div id="mobile-menu" class="hidden md:hidden bg-gray-900 border-t border-gray-800">
+<div class="px-6 py-4 space-y-3">
+<a href="#home" class="block text-white hover:text-primary transition-colors duration-300">Home</a>
+<a href="#about" class="block text-white hover:text-primary transition-colors duration-300">About Me</a>
+<a href="#skills" class="block text-white hover:text-primary transition-colors duration-300">Skills</a>
+<a href="#portfolio" class="block text-white hover:text-primary transition-colors duration-300">Portfolio</a>
+<a href="#services" class="block text-white hover:text-primary transition-colors duration-300">Services</a>
+<a href="#contact" class="block text-white hover:text-primary transition-colors duration-300">Contact</a>
+</div>
+</div>
+</nav>
+<!-- Hero Section -->
+<section id="home" class="hero-bg min-h-screen flex items-center">
+<div class="hero-overlay absolute inset-0"></div>
+<div class="relative z-10 w-full">
+<div class="max-w-7xl mx-auto px-6">
+<div class="max-w-3xl">
+<h1 class="text-6xl md:text-8xl font-bold mb-6">
+I'm a<br>
+<span class="text-primary">WEB</span><br>
+<span class="text-primary">DEVELOPER</span>.
+</h1>
+<div class="w-16 h-1 bg-primary mb-8"></div>
+<button class="bg-primary hover:bg-orange-600 text-white px-8 py-4 !rounded-button font-semibold text-lg transition-all duration-300 whitespace-nowrap">
+Contact Me
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- About Me Section -->
+<section id="about" class="py-20 bg-gray-800">
+<div class="max-w-7xl mx-auto px-6">
+<h2 class="text-5xl font-bold text-center mb-16 text-primary">About Me</h2>
+<div class="grid md:grid-cols-2 gap-12 items-center">
+<div class="text-center">
+<img src="https://readdy.ai/api/search-image?query=professional%20young%20indian%20male%20web%20developer%20portrait%2C%20confident%20smile%2C%20modern%20casual%20business%20attire%2C%20clean%20studio%20lighting%2C%20dark%20background%2C%20professional%20headshot%20style%2C%20contemporary%20look&width=400&height=500&seq=profile-img&orientation=portrait" alt="Jay Mahato" class="w-80 h-96 object-cover object-top rounded-lg mx-auto border-4 border-primary">
+</div>
+<div>
+<div class="grid grid-cols-2 gap-6 mb-8">
+<div>
+<h3 class="text-primary font-semibold mb-2">Full Name</h3>
+<p class="text-gray-300">Jay Mahato</p>
+</div>
+<div>
+<h3 class="text-primary font-semibold mb-2">Phone Number</h3>
+<p class="text-gray-300">+91 7417041224</p>
+</div>
+<div>
+<h3 class="text-primary font-semibold mb-2">Country</h3>
+<p class="text-gray-300">India</p>
+</div>
+<div>
+<h3 class="text-primary font-semibold mb-2">Email</h3>
+<p class="text-gray-300">jaymahato10125@gmail.com</p>
+</div>
+<div>
+<h3 class="text-primary font-semibold mb-2">Education</h3>
+<p class="text-gray-300">B.Tech Computer Science</p>
+</div>
+<div>
+<h3 class="text-primary font-semibold mb-2">Experience</h3>
+<p class="text-gray-300">2 Years</p>
+</div>
+</div>
+<p class="text-gray-300 text-lg leading-relaxed mb-6">
+I'm a creative and passionate Web Developer from India with over 2 years of experience in building modern, responsive websites and web applications. I specialize in full-stack development using cutting-edge technologies and frameworks to deliver exceptional digital experiences.
+</p>
+<div class="flex space-x-4">
+<a href="https://x.com/jaymahato10125" target="_blank" class="w-10 h-10 flex items-center justify-center bg-primary rounded-full hover:bg-orange-600 transition-colors cursor-pointer">
+<i class="ri-twitter-fill text-white"></i>
+</a>
+<a href="https://www.linkedin.com/in/jaymahato10125/" target="_blank" class="w-10 h-10 flex items-center justify-center bg-primary rounded-full hover:bg-orange-600 transition-colors cursor-pointer">
+<i class="ri-linkedin-fill text-white"></i>
+</a>
+<a href="https://github.com/jaymahato10125" target="_blank" class="w-10 h-10 flex items-center justify-center bg-primary rounded-full hover:bg-orange-600 transition-colors cursor-pointer">
+<i class="ri-github-fill text-white"></i>
+</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Skills Section -->
+<section id="skills" class="py-20 bg-gray-900">
+<div class="max-w-7xl mx-auto px-6">
+<h2 class="text-5xl font-bold text-center mb-16 text-primary">Skills</h2>
+<div class="grid md:grid-cols-2 gap-12">
+<div class="space-y-8">
+<div>
+<div class="flex justify-between mb-3">
+<span class="text-white font-semibold">HTML CSS</span>
+<span class="text-primary font-semibold">95%</span>
+</div>
+<div class="w-full bg-gray-700 rounded-full h-3">
+<div class="skill-bar h-3 rounded-full" style="width: 95%"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between mb-3">
+<span class="text-white font-semibold">JavaScript</span>
+<span class="text-primary font-semibold">90%</span>
+</div>
+<div class="w-full bg-gray-700 rounded-full h-3">
+<div class="skill-bar h-3 rounded-full" style="width: 90%"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between mb-3">
+<span class="text-white font-semibold">React</span>
+<span class="text-primary font-semibold">88%</span>
+</div>
+<div class="w-full bg-gray-700 rounded-full h-3">
+<div class="skill-bar h-3 rounded-full" style="width: 88%"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between mb-3">
+<span class="text-white font-semibold">Node.js</span>
+<span class="text-primary font-semibold">85%</span>
+</div>
+<div class="w-full bg-gray-700 rounded-full h-3">
+<div class="skill-bar h-3 rounded-full" style="width: 85%"></div>
+</div>
+</div>
+</div>
+<div class="space-y-8">
+<div>
+<div class="flex justify-between mb-3">
+<span class="text-white font-semibold">Express</span>
+<span class="text-primary font-semibold">82%</span>
+</div>
+<div class="w-full bg-gray-700 rounded-full h-3">
+<div class="skill-bar h-3 rounded-full" style="width: 82%"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between mb-3">
+<span class="text-white font-semibold">MongoDB</span>
+<span class="text-primary font-semibold">80%</span>
+</div>
+<div class="w-full bg-gray-700 rounded-full h-3">
+<div class="skill-bar h-3 rounded-full" style="width: 80%"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between mb-3">
+<span class="text-white font-semibold">MySQL</span>
+<span class="text-primary font-semibold">78%</span>
+</div>
+<div class="w-full bg-gray-700 rounded-full h-3">
+<div class="skill-bar h-3 rounded-full" style="width: 78%"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between mb-3">
+<span class="text-white font-semibold">Git & GitHub</span>
+<span class="text-primary font-semibold">92%</span>
+</div>
+<div class="w-full bg-gray-700 rounded-full h-3">
+<div class="skill-bar h-3 rounded-full" style="width: 92%"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Portfolio Section -->
+<section id="portfolio" class="py-20 bg-gray-800">
+<div class="max-w-7xl mx-auto px-6">
+<h2 class="text-5xl font-bold text-center mb-16 text-primary">Portfolio</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<div class="project-card bg-gray-700 rounded-lg overflow-hidden">
+<img src="https://readdy.ai/api/search-image?query=modern%20e-commerce%20website%20interface%2C%20clean%20design%2C%20product%20showcase%2C%20shopping%20cart%2C%20responsive%20layout%2C%20professional%20web%20development%20project%2C%20dark%20theme%20with%20orange%20accents&width=300&height=200&seq=project1&orientation=landscape" alt="Project 1" class="w-full h-48 object-cover object-top">
+<div class="p-4">
+<h3 class="text-white font-semibold mb-2">E-Commerce Platform</h3>
+<p class="text-gray-400 text-sm">React, Node.js, MongoDB</p>
+</div>
+</div>
+<div class="project-card bg-gray-700 rounded-lg overflow-hidden">
+<img src="https://readdy.ai/api/search-image?query=social%20media%20dashboard%20interface%2C%20analytics%20charts%2C%20user%20engagement%20metrics%2C%20modern%20web%20application%20design%2C%20dark%20theme%2C%20professional%20development%20project&width=300&height=200&seq=project2&orientation=landscape" alt="Project 2" class="w-full h-48 object-cover object-top">
+<div class="p-4">
+<h3 class="text-white font-semibold mb-2">Social Media Dashboard</h3>
+<p class="text-gray-400 text-sm">Vue.js, Express, MySQL</p>
+</div>
+</div>
+<div class="project-card bg-gray-700 rounded-lg overflow-hidden">
+<img src="https://readdy.ai/api/search-image?query=task%20management%20application%20interface%2C%20kanban%20board%2C%20project%20tracking%2C%20productivity%20tool%2C%20modern%20web%20design%2C%20dark%20theme%20with%20orange%20highlights&width=300&height=200&seq=project3&orientation=landscape" alt="Project 3" class="w-full h-48 object-cover object-top">
+<div class="p-4">
+<h3 class="text-white font-semibold mb-2">Task Management App</h3>
+<p class="text-gray-400 text-sm">React, Firebase</p>
+</div>
+</div>
+<div class="project-card bg-gray-700 rounded-lg overflow-hidden">
+<img src="https://readdy.ai/api/search-image?query=restaurant%20website%20design%2C%20food%20menu%20showcase%2C%20online%20ordering%20system%2C%20modern%20hospitality%20web%20interface%2C%20dark%20elegant%20theme&width=300&height=200&seq=project4&orientation=landscape" alt="Project 4" class="w-full h-48 object-cover object-top">
+<div class="p-4">
+<h3 class="text-white font-semibold mb-2">Restaurant Website</h3>
+<p class="text-gray-400 text-sm">HTML, CSS, JavaScript</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Services Section -->
+<section id="services" class="py-20 bg-gray-900">
+<div class="max-w-7xl mx-auto px-6">
+<h2 class="text-5xl font-bold text-center mb-16 text-primary">SERVICES</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<div class="service-card p-8 rounded-lg text-center">
+<div class="w-16 h-16 flex items-center justify-center bg-primary rounded-full mx-auto mb-6">
+<i class="ri-palette-line text-2xl text-white"></i>
+</div>
+<h3 class="text-xl font-semibold mb-4 text-white">Frontend Development</h3>
+<p class="text-gray-400">Responsive website UI with HTML, CSS, 
+SPA (Single Page Applications) using React
+Landing pages, blogs, portfolio</p>
+</div>
+<div class="service-card p-8 rounded-lg text-center">
+<div class="w-16 h-16 flex items-center justify-center bg-primary rounded-full mx-auto mb-6">
+<i class="ri-video-line text-2xl text-white"></i>
+</div>
+<h3 class="text-xl font-semibold mb-4 text-white">Backend Development</h3>
+<p class="text-gray-400">RESTful API development using Node.js & Express
+Authentication systems, File uploads, payment integrations 
+WebSockets for real-time apps (chat apps, notifications)</p>
+</div>
+<div class="service-card p-8 rounded-lg text-center">
+<div class="w-16 h-16 flex items-center justify-center bg-primary rounded-full mx-auto mb-6">
+<i class="ri-award-line text-2xl text-white"></i>
+</div>
+<h3 class="text-xl font-semibold mb-4 text-white">Full Stack App Development (MERN)</h3>
+<p class="text-gray-400">Complete applications using MongoDB, Express, React, and Node
+Admin dashboards, CMS, E-commerce, blog apps
+Role-based authentication and authorization
+
+</p>
+</div>
+<div class="service-card p-8 rounded-lg text-center">
+<div class="w-16 h-16 flex items-center justify-center bg-primary rounded-full mx-auto mb-6">
+<i class="ri-code-line text-2xl text-white"></i>
+</div>
+<h3 class="text-xl font-semibold mb-4 text-white">Database & Backend Services
+</h3>
+<p class="text-gray-400">Schema design for scalable systems.
+Third-party APIs (e.g., payment, SMS, maps).
+REST & CRUD API development.
+migration between SQL and NoSQL.</p>
+</div>
+<div class="service-card p-8 rounded-lg text-center">
+<div class="w-16 h-16 flex items-center justify-center bg-primary rounded-full mx-auto mb-6">
+<i class="ri-movie-line text-2xl text-white"></i>
+</div>
+<h3 class="text-xl font-semibold mb-4 text-white">DevOps & Hosting Services</h3>
+<p class="text-gray-400">Deploying Node.js/React apps on:
+VPS (DigitalOcean, Linode)
+Platforms like Render, Vercel, Netlify
+Setting up Nginx, PM2, domain pointing, HTTPS
+CI/CD setup (basic)</p>
+</div>
+<div class="service-card p-8 rounded-lg text-center">
+<div class="w-16 h-16 flex items-center justify-center bg-primary rounded-full mx-auto mb-6">
+<i class="ri-3d-view-line text-2xl text-white"></i>
+</div>
+<h3 class="text-xl font-semibold mb-4 text-white">Programming & Automation</h3>
+<p class="text-gray-400">C++: Simple DSA problems, logic building, tutoring
+Python: Scripting, automation, data parsing, web scraping
+Basic Flask or Django APIs if required</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Contact Section -->
+<section id="contact" class="py-20 bg-primary">
+<div class="max-w-7xl mx-auto px-6">
+<h2 class="text-5xl font-bold text-center mb-16 text-white">Contact me</h2>
+<div class="grid md:grid-cols-3 gap-12">
+<div class="text-center">
+<div class="w-16 h-16 flex items-center justify-center bg-white rounded-full mx-auto mb-4">
+<i class="ri-phone-line text-2xl text-primary"></i>
+</div>
+<h3 class="text-white font-semibold mb-2">Call Me</h3>
+<p class="text-white/90">+91 7417041224</p>
+</div>
+<div class="text-center">
+<div class="w-16 h-16 flex items-center justify-center bg-white rounded-full mx-auto mb-4">
+<i class="ri-mail-line text-2xl text-primary"></i>
+</div>
+<h3 class="text-white font-semibold mb-2">Email Me</h3>
+<p class="text-white/90">jaymahato10125@gmail.com</p>
+</div>
+<div class="text-center">
+<div class="w-16 h-16 flex items-center justify-center bg-white rounded-full mx-auto mb-4">
+<i class="ri-map-pin-line text-2xl text-primary"></i>
+</div>
+<h3 class="text-white font-semibold mb-2">Location</h3>
+<p class="text-white/90">Bangalore, Karnataka, India</p>
+</div>
+</div>
+<div class="mt-16 max-w-2xl mx-auto">
+<form class="contact-form space-y-6">
+<div class="grid md:grid-cols-2 gap-6">
+<input type="text" placeholder="Your Name" class="w-full px-4 py-3 rounded text-white placeholder-gray-400">
+<input type="email" placeholder="Your Email" class="w-full px-4 py-3 rounded text-white placeholder-gray-400">
+</div>
+<input type="text" placeholder="Subject" class="w-full px-4 py-3 rounded text-white placeholder-gray-400">
+<textarea rows="5" placeholder="Your Message" class="w-full px-4 py-3 rounded text-white placeholder-gray-400 resize-none"></textarea>
+<div class="text-center">
+<button type="submit" class="bg-white hover:bg-gray-100 text-primary px-8 py-4 !rounded-button font-semibold text-lg transition-all duration-300 whitespace-nowrap">
+Send Message
+</button>
+</div>
+</form>
+</div>
+</div>
+</section>
+<script id="mobile-menu-toggle">
+document.addEventListener('DOMContentLoaded', function() {
+const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+const mobileMenu = document.getElementById('mobile-menu');
+mobileMenuBtn.addEventListener('click', function() {
+mobileMenu.classList.toggle('hidden');
+});
+});
+</script>
+<script id="smooth-scroll">
+document.addEventListener('DOMContentLoaded', function() {
+const navLinks = document.querySelectorAll('nav a[href^="#"]');
+navLinks.forEach(link => {
+link.addEventListener('click', function(e) {
+e.preventDefault();
+const targetId = this.getAttribute('href');
+const targetSection = document.querySelector(targetId);
+if (targetSection) {
+targetSection.scrollIntoView({
+behavior: 'smooth',
+block: 'start'
+});
+}
+// Close mobile menu if open
+const mobileMenu = document.getElementById('mobile-menu');
+if (!mobileMenu.classList.contains('hidden')) {
+mobileMenu.classList.add('hidden');
+}
+});
+});
+});
+</script>
+<script id="contact-form">
+document.addEventListener('DOMContentLoaded', function() {
+const contactForm = document.querySelector('.contact-form');
+contactForm.addEventListener('submit', function(e) {
+e.preventDefault();
+// Get form data
+const formData = new FormData(this);
+const name = this.querySelector('input[placeholder="Your Name"]').value;
+const email = this.querySelector('input[placeholder="Your Email"]').value;
+const subject = this.querySelector('input[placeholder="Subject"]').value;
+const message = this.querySelector('textarea').value;
+// Simple validation
+if (!name || !email || !subject || !message) {
+alert('Please fill in all fields');
+return;
+}
+// Simulate form submission
+alert('Thank you for your message! I will get back to you soon.');
+this.reset();
+});
+});
+</script>
+<script id="hero-cta">
+document.addEventListener('DOMContentLoaded', function() {
+const heroBtn = document.querySelector('#home button');
+heroBtn.addEventListener('click', function() {
+document.querySelector('#contact').scrollIntoView({
+behavior: 'smooth',
+block: 'start'
+});
+});
+});
+</script>
+</body>
+</html>
