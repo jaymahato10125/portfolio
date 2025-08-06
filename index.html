@@ -73,6 +73,68 @@ transition: border-color 0.3s ease;
 border-color: #FF6B35;
 outline: none;
 }
+
+/* Light Mode Styles */
+.light-mode {
+background-color: #f8fafc !important;
+color: #1a1a1a !important;
+}
+
+.light-mode .bg-gray-900 {
+background-color: #f8fafc !important;
+}
+
+.light-mode .bg-gray-800 {
+background-color: #e2e8f0 !important;
+}
+
+.light-mode .bg-gray-700 {
+background-color: #cbd5e1 !important;
+}
+
+.light-mode .text-white:not(nav .text-white):not(.text-primary) {
+color: #1a1a1a !important;
+}
+
+/* Keep navbar text white in both modes */
+nav .text-white {
+color: #ffffff !important;
+}
+
+.light-mode .text-gray-300 {
+color: #475569 !important;
+}
+
+.light-mode .text-gray-400 {
+color: #64748b !important;
+}
+
+.light-mode .border-gray-800 {
+border-color: #e2e8f0 !important;
+}
+
+.light-mode .hero-overlay {
+background: linear-gradient(135deg, rgba(248, 250, 252, 0.9) 0%, rgba(241, 245, 249, 0.8) 100%);
+}
+
+.light-mode .service-card {
+background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+}
+
+.light-mode .service-card:hover {
+background: linear-gradient(135deg, #FF6B35 0%, #FF8A65 100%);
+}
+
+.light-mode .contact-form input,
+.light-mode .contact-form textarea {
+background: rgba(241, 245, 249, 0.8);
+border: 1px solid rgba(255, 107, 53, 0.3);
+color: #1a1a1a;
+}
+
+.light-mode .placeholder-gray-400::placeholder {
+color: #94a3b8 !important;
+}
 </style>
 </head>
 <body class="bg-gray-900 text-white">
@@ -81,17 +143,25 @@ outline: none;
 <div class="max-w-7xl mx-auto px-6">
 <div class="flex items-center justify-between h-16">
 <div class="text-2xl font-bold text-primary">JM</div>
-<div class="hidden md:flex space-x-8">
-<a href="#home" class="text-white hover:text-primary transition-colors duration-300">Home</a>
-<a href="#about" class="text-white hover:text-primary transition-colors duration-300">About Me</a>
-<a href="#skills" class="text-white hover:text-primary transition-colors duration-300">Skills</a>
-<a href="#portfolio" class="text-white hover:text-primary transition-colors duration-300">Portfolio</a>
-<a href="#services" class="text-white hover:text-primary transition-colors duration-300">Services</a>
-<a href="#contact" class="text-white hover:text-primary transition-colors duration-300">Contact</a>
-</div>
-<button id="mobile-menu-btn" class="md:hidden w-8 h-8 flex items-center justify-center">
-<i class="ri-menu-line text-xl"></i>
-</button>
+        <div class="hidden md:flex space-x-8 items-center">
+            <a href="#home" class="text-white hover:text-primary transition-colors duration-300">Home</a>
+            <a href="#about" class="text-white hover:text-primary transition-colors duration-300">About Me</a>
+            <a href="#skills" class="text-white hover:text-primary transition-colors duration-300">Skills</a>
+            <a href="#portfolio" class="text-white hover:text-primary transition-colors duration-300">Portfolio</a>
+            <a href="#services" class="text-white hover:text-primary transition-colors duration-300">Services</a>
+            <a href="#contact" class="text-white hover:text-primary transition-colors duration-300">Contact</a>
+            <button id="theme-toggle" class="p-2 rounded-lg bg-gray-800 hover:bg-gray-700 transition-colors duration-300">
+                <i id="theme-icon" class="ri-moon-line text-xl text-white"></i>
+            </button>
+        </div>
+        <div class="flex items-center space-x-2">
+            <button id="mobile-menu-btn" class="md:hidden w-8 h-8 flex items-center justify-center">
+                <i class="ri-menu-line text-xl"></i>
+            </button>
+            <button id="theme-toggle-mobile" class="md:hidden p-2 rounded-lg bg-gray-800 hover:bg-gray-700 transition-colors duration-300">
+                <i id="theme-icon-mobile" class="ri-moon-line text-xl text-white"></i>
+            </button>
+        </div>
 </div>
 </div>
 <div id="mobile-menu" class="hidden md:hidden bg-gray-900 border-t border-gray-800">
@@ -102,6 +172,12 @@ outline: none;
 <a href="#portfolio" class="block text-white hover:text-primary transition-colors duration-300">Portfolio</a>
 <a href="#services" class="block text-white hover:text-primary transition-colors duration-300">Services</a>
 <a href="#contact" class="block text-white hover:text-primary transition-colors duration-300">Contact</a>
+<div class="pt-3 border-t border-gray-700">
+<button id="theme-toggle-menu" class="flex items-center space-x-2 text-white hover:text-primary transition-colors duration-300">
+<i id="theme-icon-menu" class="ri-moon-line"></i>
+<span id="theme-text-menu">Light Mode</span>
+</button>
+</div>
 </div>
 </div>
 </nav>
@@ -472,6 +548,65 @@ behavior: 'smooth',
 block: 'start'
 });
 });
+});
+</script>
+
+<script id="theme-toggle">
+document.addEventListener('DOMContentLoaded', function() {
+// Get theme toggle elements
+const themeToggle = document.getElementById('theme-toggle');
+const themeToggleMobile = document.getElementById('theme-toggle-mobile');
+const themeToggleMenu = document.getElementById('theme-toggle-menu');
+const themeIcon = document.getElementById('theme-icon');
+const themeIconMobile = document.getElementById('theme-icon-mobile');
+const themeIconMenu = document.getElementById('theme-icon-menu');
+const themeTextMenu = document.getElementById('theme-text-menu');
+const body = document.body;
+
+// Check for saved theme preference or default to dark mode
+const currentTheme = localStorage.getItem('theme') || 'dark';
+
+// Set initial theme
+if (currentTheme === 'light') {
+body.classList.add('light-mode');
+updateIcons('light');
+}
+
+// Toggle theme function
+function toggleTheme() {
+if (body.classList.contains('light-mode')) {
+body.classList.remove('light-mode');
+localStorage.setItem('theme', 'dark');
+updateIcons('dark');
+} else {
+body.classList.add('light-mode');
+localStorage.setItem('theme', 'light');
+updateIcons('light');
+}
+}
+
+// Update icons based on theme
+function updateIcons(theme) {
+const moonClass = 'ri-moon-line';
+const sunClass = 'ri-sun-line';
+
+if (theme === 'light') {
+themeIcon.className = sunClass + ' text-xl text-white';
+themeIconMobile.className = sunClass + ' text-xl text-white';
+themeIconMenu.className = sunClass;
+themeTextMenu.textContent = 'Dark Mode';
+} else {
+themeIcon.className = moonClass + ' text-xl text-white';
+themeIconMobile.className = moonClass + ' text-xl text-white';
+themeIconMenu.className = moonClass;
+themeTextMenu.textContent = 'Light Mode';
+}
+}
+
+// Add event listeners
+themeToggle.addEventListener('click', toggleTheme);
+themeToggleMobile.addEventListener('click', toggleTheme);
+themeToggleMenu.addEventListener('click', toggleTheme);
 });
 </script>
 </body>
